@@ -1,0 +1,93 @@
+/*
+
+COLORS: 
+	- darkblue
+		13 96 255
+		0D60FF
+	-lightblue
+		12 145 232
+		0C91E8
+	-turquoise
+		0 222 255
+		00DEFF
+	- mintgreen
+		12 232 200
+		0CE8C8
+	-lightgreen
+		13 255 152
+		0DFF98
+*/
+
+
+// Body
+$body-bg: #f5f8fa;
+
+// Typography
+$font-family-sans-serif: "Raleway", sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+html, body {
+    color: #636b6f;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    height: 100vh;
+    margin: 0;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+
+
+// Navigation
+header{
+	background-color: #00DEFF;
+}
+.navbar{
+	display: inline-block;
+	width: 100%;
+}
+.navbar-inner ul li{
+	float: left;
+	padding: 1em;
+}
