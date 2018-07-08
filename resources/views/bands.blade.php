@@ -2,8 +2,6 @@
 
 @section('content')
 	<div class="content">
-	    <div class="title m-b-md">
-	        Bands
-	    </div>
+	    <h1>Bands</h1>
 	</div>
 @endsection

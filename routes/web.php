@@ -12,13 +12,11 @@
 */
 
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'IndexController@showHome');
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', 'Auth\LoginController@showPage');
+Route::post('/login', 'Auth\LoginController@loginUser');
+Route::get('/register', 'Auth\LoginController@showPage');
 
 Route::get('/bands', function () {
     return view('bands');

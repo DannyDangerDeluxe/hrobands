@@ -1,9 +1,7 @@
 @extends('layouts/common')
 
 @section('content')
-	<div class="content container">
-	    <div class="title m-b-md">
-	        Stoner Rock From Rostock
-	    </div>
+	<div class="content">
+	    <h1 class="title">{{__('home.title')}}</h1>
 	</div>
 @endsection

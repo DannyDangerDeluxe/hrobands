@@ -2,7 +2,7 @@
 @include('shared.head')
 @include('shared.header')
 
-<div class="flex-center position-ref full-height">
+<div class="container">
     @yield('content');
 </div>
 

@@ -12,6 +12,9 @@
 
         <!-- Styles -->
         <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet" type="text/css">
+
+        {!! MaterializeCSS::include_full() !!}
+        
         @stack('scripts')
     </head>
     <body>
