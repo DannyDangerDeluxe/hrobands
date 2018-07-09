@@ -10,9 +10,11 @@
 
 					<label for="email">{{__('home.login_email')}}</label>
 					<input type="text" name="email" required>
+					<span class="form-error">{{ $errors->first('email') }}</span>
 
 					<label for="pass">{{__('home.login_password')}}</label>
-					<input type="password" name="pass" required>
+					<input type="password" name="password" required>
+					<span class="form-error">{{ $errors->first('password') }}</span>
 
 					<input type="submit" value="{{__('home.login_submit')}}">
 				</fieldset>

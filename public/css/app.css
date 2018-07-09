@@ -55,6 +55,14 @@ ul.nav {
   background-color: #00DEFF;
 }
 
+/***************************************
+		   LOGIN/REGISTER PAGE
+***************************************/
+
+.form-error {
+  display: block;
+}
+
 /*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors

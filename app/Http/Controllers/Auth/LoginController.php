@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -49,9 +50,34 @@ class LoginController extends Controller
 
     /**
      * User login
+     * @param Request $request
      */
-    public function loginUser()
+    public function loginUser(Request $request)
     {
-        return view('home');
+        $validatedData = $request->validate([
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:6|max:255',
+        ]);
+        $messages = [
+            'email.required' => 'We need to know your e-mail address!',
+        ];
+        $validator = Validator::make($request, $rules, $messages);
+    }
+
+
+
+    /**
+     * User register
+     * @param Request $request
+     */
+    public function registerUser(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255|min:3',
+            'band' => 'required|string|max:255|min:3',
+            'email' => 'required|email|max:255',
+            'birthdate' => 'required|date',
+            'password' => 'required|min:6|max:255',
+        ]);
     }
 }
