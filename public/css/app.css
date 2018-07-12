@@ -27,13 +27,43 @@ body {
   margin: 0;
 }
 
+h1 {
+  font-size: 40px !important;
+  font-weight: bold !important;
+}
+
+h2 {
+  font-size: 32px !important;
+  font-weight: bold !important;
+}
+
+h3 {
+  font-size: 26px !important;
+  font-weight: bold !important;
+}
+
+h4 {
+  font-size: 22px !important;
+  font-weight: bold !important;
+}
+
+h5 {
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
+
+h6 {
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+
 .container,
 .row {
   padding: 0 !important;
 }
 
 .title {
-  font-size: 84px;
+  font-weight: bold;
 }
 
 .links > a {
@@ -50,9 +80,32 @@ body {
 			   NAVIGATION
 ***************************************/
 
-#header-nav,
-ul.nav {
-  background-color: #00DEFF;
+#header,
+#footer {
+  background-color: #00DEFF !important;
+}
+
+nav {
+  display: block !important;
+  background-color: transparent !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.nav {
+  display: inline !important;
+}
+
+.navbar-fixed nav {
+  position: inherit !important;
+}
+
+/***************************************
+			   PAGE LAYOUT
+***************************************/
+
+.content {
+  min-height: 100vh;
 }
 
 /***************************************

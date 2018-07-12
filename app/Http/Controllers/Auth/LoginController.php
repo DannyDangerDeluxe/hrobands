@@ -58,10 +58,6 @@ class LoginController extends Controller
             'email' => 'required|email|max:255',
             'password' => 'required|min:6|max:255',
         ]);
-        $messages = [
-            'email.required' => 'We need to know your e-mail address!',
-        ];
-        $validator = Validator::make($request, $rules, $messages);
     }
 
 

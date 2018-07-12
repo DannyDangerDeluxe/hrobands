@@ -1,6 +1,15 @@
 <?php
 
 return [
+	'login' => 'Login',
+	'logout' => 'Logout',
+	'register' => 'Registrieren',
+	'home' => 'Start',
+	'news' => 'News',
+	'bands' => 'Bands',
+	'dates' => 'Gigs',
+	'profile' => 'Profil',
+	
 	'title' => 'Stoner Bands aus Rostock',
 
 	'login_title' => 'Einloggen',
