@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
@@ -33,6 +34,13 @@ class IndexController extends Controller
      */
     public function showHome()
     {
-        return view('index');
+        $bands = DB::select('
+            SELECT * FROM bands 
+            LEFT JOIN media 
+            ON bands.media_id = media.media_id
+        ');
+
+        // return view('user.index', ['users' => $users]);
+        return view('index', ['bands' => $bands]);
     }
 }
