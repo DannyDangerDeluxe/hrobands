@@ -97,6 +97,10 @@ img {
   width: 100%;
 }
 
+float-none {
+  float: none;
+}
+
 /***************************************
 			PADDING & MARGIN
 ***************************************/
@@ -181,6 +185,10 @@ img {
   margin-left: 1em !important;
 }
 
+.margin-md-bottom {
+  margin-bottom: 2.5em !important;
+}
+
 .block {
   display: block !important;
 }
@@ -211,6 +219,14 @@ nav {
 
 .navbar-fixed nav {
   position: inherit !important;
+}
+
+/***************************************
+			   	  FORMS
+***************************************/
+
+select {
+  display: inherit;
 }
 
 /***************************************

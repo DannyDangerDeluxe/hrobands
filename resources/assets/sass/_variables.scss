@@ -90,6 +90,10 @@ img{
 	width: 100%;
 }
 
+float-none{
+	float: none;
+}
+
 
 /***************************************
 			PADDING & MARGIN
@@ -126,6 +130,9 @@ img{
 	padding-left: 1em !important;
 }
 
+
+
+
 .no-margin{
 	margin: 0 !important;
 }
@@ -158,6 +165,12 @@ img{
 	margin-left: 1em !important;
 }
 
+.margin-md-bottom{
+	margin-bottom: 2.5em !important;
+}
+
+
+
 .block{
 	display: block !important;
 }
@@ -187,6 +200,14 @@ nav{
     position: inherit !important;
 }
 
+
+
+/***************************************
+			   	  FORMS
+***************************************/
+select{
+	display: inherit;
+}
 
 
 /***************************************

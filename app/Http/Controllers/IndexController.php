@@ -38,6 +38,7 @@ class IndexController extends Controller
             SELECT * FROM bands 
             LEFT JOIN media 
             ON bands.media_id = media.media_id
+            LIMIT 3
         ');
 
         // return view('user.index', ['users' => $users]);

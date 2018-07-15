@@ -34,3 +34,10 @@ Route::get('/news', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/* dev ROUTES */
+Route::get('/dev', 'DevController@showPage');
+Route::post('/dev/gig', 'DevController@addGig');
+Route::post('/dev/band', 'DevController@addBand');
+
+Route::view('error', 'error');
