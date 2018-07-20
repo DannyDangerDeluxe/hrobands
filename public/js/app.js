@@ -47536,9 +47536,12 @@ var render = function() {
         return _vm.bands && _vm.bands.length > 0
           ? _c(
               "div",
-              { staticClass: "band-container padding-sm margin-md-bottom row" },
+              {
+                staticClass:
+                  "band-container full-brdr padding-sm margin-md-bottom row"
+              },
               [
-                band.path === null
+                band.path === null || band.path === ""
                   ? _c("div", { staticClass: "col s12" }, [
                       _c("div", { staticClass: "col s12" }, [
                         _c("div", { staticClass: "section no-btm-padding" }, [

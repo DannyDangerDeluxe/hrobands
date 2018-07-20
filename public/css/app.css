@@ -198,6 +198,19 @@ float-none {
 }
 
 /***************************************
+				BORDERS
+***************************************/
+
+.full-brdr {
+  border: 1px solid #abc;
+  border-radius: 5px;
+}
+
+.btm-brdr {
+  border-bottom: 1px solid #abc;
+}
+
+/***************************************
 			   NAVIGATION
 ***************************************/
 
@@ -239,8 +252,11 @@ select {
 
 .band-container {
   padding: 0 1em 1em;
-  border: 1px solid #abc;
-  border-radius: 5px;
+}
+
+.header-image-title {
+  margin-top: -5em;
+  margin-left: 2em;
 }
 
 /***************************************

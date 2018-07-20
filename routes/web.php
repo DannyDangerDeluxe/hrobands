@@ -20,24 +20,19 @@ Route::post('/login', 'Auth\LoginController@loginUser');
 Route::get('/register', 'Auth\LoginController@showPage');
 */
 
-Route::get('/bands', function () {
-    return view('bands');
-});
+Route::view('/bands', 'bands'); 
+Route::view('/dates', 'dates');
+Route::view('/news', 'news'); 
 
-Route::get('/dates', function () {
-    return view('dates');
-});
+Route::get('/impressum', 'IndexController@showFaq');
 
-Route::get('/news', function () {
-    return view('news');
-});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::view('error', 'error');
 
 /* dev ROUTES */
 Route::get('/dev', 'DevController@showPage');
 Route::post('/dev/gig', 'DevController@addGig');
 Route::post('/dev/band', 'DevController@addBand');
-
-Route::view('error', 'error');

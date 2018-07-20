@@ -2,8 +2,8 @@
     <div class="container">
         <h1>{{ headline }}</h1>
 
-        <div v-if="bands && bands.length > 0" v-for="band in bands" class="band-container padding-sm margin-md-bottom row">
-            <div v-if="band.path === null" class="col s12">
+        <div v-if="bands && bands.length > 0" v-for="band in bands" class="band-container full-brdr padding-sm margin-md-bottom row">
+            <div v-if="band.path === null || band.path === ''" class="col s12">
                 <div class="col s12">
                     <div class="section no-btm-padding">
                         <h2 class="no-padding no-margin block">{{ band.name }}</h2>
