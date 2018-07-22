@@ -27,6 +27,20 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
+     * The connection name for the model.
+     *
+     * @var string
+     */
+    protected $connection = 'mysql';
+
 
     /**
      * Add a mutator to ensure hashed passwords
@@ -38,6 +52,5 @@ class User extends Authenticatable
     
 
     public function __construct(){
-
     }
 }

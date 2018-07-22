@@ -39,6 +39,14 @@ return [
 	'register_password' => 'Passwort:',
 	'register_submit' => 'registrieren',
 
+	/* DASHBOARD NAVIGATION */
+	'dashnav_dashboard' => 'Dashboard',
+	'dashnav_profile' => 'Profil',
+	'dashnav_band' => 'Band',
+	'dashnav_gigs' => 'Gigs',
+	'dashnav_media' => 'Media',
+	'dashnav_settings' => 'Einstellungen',
+
 	/* DEVELOPMENT */
 	'dev_title' => 'Development',
 	'dev_gig_headline' => 'Events hinzufügen',

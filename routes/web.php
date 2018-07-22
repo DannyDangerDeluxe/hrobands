@@ -14,25 +14,33 @@
 
 Route::get('/', 'IndexController@showHome');
 
-/*
-Route::get('/login', 'Auth\LoginController@showPage');
-Route::post('/login', 'Auth\LoginController@loginUser');
-Route::get('/register', 'Auth\LoginController@showPage');
-*/
-
 Route::view('/bands', 'bands'); 
 Route::view('/dates', 'dates');
 Route::view('/news', 'news'); 
 
-Route::get('/impressum', 'IndexController@showFaq');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/imprint', 'IndexController@showFaq');
 Route::view('error', 'error');
 
 /* dev ROUTES */
 Route::get('/dev', 'DevController@showPage');
 Route::post('/dev/gig', 'DevController@addGig');
 Route::post('/dev/band', 'DevController@addBand');
+
+// Authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@store');
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+// dashboard / home
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/band', 'HomeController@showUserBand');

@@ -23,6 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('user.home');
+    }
+
+    public function showUserBand(){
+        // dd(auth()->user()); exit;
+
+        return view('user.band')->with([
+            'band_id' => auth()->user()->band_id
+        ]);
     }
 }

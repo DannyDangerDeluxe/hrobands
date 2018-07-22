@@ -75,12 +75,37 @@ class RegisterController extends Controller
 
     protected function store(Request $request)
     {
-        $this->validator(validator($request));
-        
-        $user = User::create($request);
-        
-        auth()->login($user);
-        
-        return redirect()->to('/dev');
+        $inputs = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+            'password_confirmation' => $request->input('password_confirmation')
+        ];
+
+        // $validate = $this->validator($inputs);
+        // dd($request->all()); exit;
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        // validator error handling
+        if ($validator->fails()) {
+            return redirect('register')
+                        ->withErrors($validator)
+                        ->withInput();
+
+        // create and store user and redirect
+        }else{
+            $user = User::create();
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->password = $request->input('password');
+
+            $user->save();
+            auth()->login($user);
+        }
     }
 }
