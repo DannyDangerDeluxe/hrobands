@@ -20,6 +20,10 @@ return [
 	'impressum' => 'Impressum',
 	'policy' => 'Datenschutz',
 	'contact' => 'Kontakt',
+
+	/* FORM */
+	'submit' => 'absenden',
+	'please_choose' => 'Bitte auswählen',
 	
 	/* META */
 	'title' => 'Stoner Bands aus Rostock',
@@ -30,7 +34,7 @@ return [
 	'login_password' => 'Passwort:',
 	'login_submit' => 'einloggen',
 
-	/* REGISTER */
+	/* REGISTER USER*/
 	'register_title' => 'Registrieren',
 	'register_name' => 'Name:',
 	'register_email' => 'eMail:',
@@ -46,6 +50,17 @@ return [
 	'dashnav_gigs' => 'Gigs',
 	'dashnav_media' => 'Media',
 	'dashnav_settings' => 'Einstellungen',
+
+	/* DASHBOARD NAVIGATION */
+	'dash_band_reg_title' => 'Band registrieren',
+	'dash_band_reg_name' => 'Name',
+	'dash_band_reg_genre' => 'Genre ausählen',
+	'dash_band_reg_founded' => 'Gründungsjahr',
+	'dash_band_reg_website' => 'Link zur Webseite',
+	'dash_band_reg_desc' => 'Kurzbeschreibung',
+	'dash_band_reg_image' => 'Bandfoto',
+	'dash_band_reg_submit' => 'registrieren',
+
 
 	/* DEVELOPMENT */
 	'dev_title' => 'Development',
@@ -63,14 +78,6 @@ return [
 	'dev_gig_img_path' => 'Bild',
 	'dev_gig_img_alt' => 'Beschreibung vom Bild',
 	'dev_gig_submit' => 'Event eintragen',
-
-	'dev_band_headline' => 'Bands hinzufügen',
-	'dev_band_name' => 'Name',
-	'dev_band_choose_genre' => 'Genre ausählen',
-	'dev_band_choose_founded' => 'Gründungsjahr auswählen',
-	'dev_band_website' => 'Webseite',
-	'dev_band_desc' => 'Beschreibung',
-	'dev_band_submit' => 'Band eintragen',
 
 	/************************************************************
 							VUE COMPONENTS

@@ -42,5 +42,10 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 // dashboard / home
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/band', 'HomeController@showUserBand');
+Route::get('/dash/home', 'HomeController@index')->name('home');
+Route::get('/dash/profile', 'HomeController@showProfile');
+Route::get('/dash/band', 'HomeController@showUserBand');
+Route::post('/dash/band/register', 'HomeController@registerBand');
+Route::get('/dash/gigs', 'HomeController@showGigs');
+Route::get('/dash/media', 'HomeController@showMedia');
+Route::get('/dash/settings', 'HomeController@showSettings');

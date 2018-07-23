@@ -91,7 +91,11 @@ img{
 	width: 100%;
 }
 
-float-none{
+form{
+	margin-bottom: 0 !important;
+}
+
+.float-none{
 	float: none;
 }
 
@@ -290,11 +294,22 @@ select{
 }
 
 .dashnav nav a:hover{
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(12, 145, 232, 0.25);
 	text-decoration: none;
 }
 
 
-.dash .title{
+.dashnav .title{
 	padding: 0.8em
+}
+
+.dashnav nav .active{
+	background-color: #0C91E8;
+	color: white;
+}
+
+
+/* BAND REGISTRATION */
+.register-band .file-field .btn {
+    line-height: 2.5em;
 }
