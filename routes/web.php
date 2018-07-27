@@ -49,3 +49,6 @@ Route::post('/dash/band/register', 'HomeController@registerBand');
 Route::get('/dash/gigs', 'HomeController@showGigs');
 Route::get('/dash/media', 'HomeController@showMedia');
 Route::get('/dash/settings', 'HomeController@showSettings');
+
+// media
+Route::post('imageupload','ImageUploadController@imageUploadPost');

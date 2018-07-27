@@ -41,12 +41,14 @@ class IndexController extends Controller
         $key = env('PRISMIC_KEY');
         $api = Api::get($url, $key);
         
+        /*
         $bands = DB::select('
             SELECT * FROM bands 
             LEFT JOIN media 
             ON bands.media_id = media.media_id
             LIMIT 3
         ');
+        */
 
         $response = $api->getSingle('home');   
         $document = $response->getData()->data;
@@ -55,7 +57,8 @@ class IndexController extends Controller
 
         // return view('user.index', ['users' => $users]);
         return view('index')->with([
-            'bands' => $bands,
+            // 'bands' => $bands,
+            'bands' => null,
             'title' => $document->title[0]->text,
             'welcome' => $document->welcome_text[0]->text,
             'header_image' => $document->header_image->url,

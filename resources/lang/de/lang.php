@@ -61,6 +61,13 @@ return [
 	'dash_band_reg_image' => 'Bandfoto',
 	'dash_band_reg_submit' => 'registrieren',
 
+	/* DASHBOARD UPLOAD MEDIA */
+	'dash_media_title' => 'Media',
+	'dash_media_name' => 'Name',
+	'dash_media_alt' => 'Alternativer Text',
+	'dash_media_undertitle' => 'Untertitel',
+	'dash_media_image' => 'Foto auswählen',
+	'dash_media_submit' => 'speichern',
 
 	/* DEVELOPMENT */
 	'dev_title' => 'Development',

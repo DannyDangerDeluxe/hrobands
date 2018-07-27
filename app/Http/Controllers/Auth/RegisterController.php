@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dash/home';
 
     /**
      * Create a new controller instance.
@@ -99,7 +99,8 @@ class RegisterController extends Controller
 
         // create and store user and redirect
         }else{
-            $user = User::create();
+            // not the right way
+            $user = new User;
             $user->name = $request->input('name');
             $user->email = $request->input('email');
             $user->password = $request->input('password');

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Band;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
+    private $userId;
     /**
      * Create a new controller instance.
      *
@@ -30,26 +33,27 @@ class HomeController extends Controller
 
     public function showUserBand()
     {
-        $id = auth()->user()->band_id;
+        $this->userId = auth()->user()->band_id;
 
-        if($id){
+        if($this->userId){
+            $band = Band::find($this->userId);
+
             return view('user.band')->with([
-                'band_id' => $id
+                'band' => (array) $band->getAttributes(),
+                'band_id' => $this->userId,
             ]); 
         }else{            
+            $genreArray = [];
             $genres = DB::select('
                 SELECT * FROM genres
             ');
 
-            $genreArray = [];
             foreach ($genres as $key => $val) {
-                $genre_temp['id'] = $val->genre_id;
-                $genre_temp['name'] = $val->genre_name;
-                $genre_temp['parent'] = $val->genre_parent;
-                array_push($genreArray, $genre_temp);
+                $genreTemp['id'] = $val->id;
+                $genreTemp['name'] = $val->name;
+                $genreTemp['parent'] = $val->parent;
+                array_push($genreArray, $genreTemp);
             }
-
-            // dd($genreArray); exit;
             
             return view('user.band')->with([
                 'band_id' => null,
@@ -71,11 +75,32 @@ class HomeController extends Controller
 
         // validator error handling
         if ($validator->fails()) {
-            dd('not valid', $request, $validator); exit;
+            return redirect('dash/band')
+                        ->withErrors($validator)
+                        ->withInput($request->all());
 
         // validator success
         }else{
-            dd('valid', $request); exit;
+            $band = Band::create();
+            $band->name = $request->input('name');
+            $band->website = $request->input('website');
+            $band->founded = $request->input('founded');
+            $band->genre_id = $request->input('genre');
+            $band->description = $request->input('description');
+            $band->save();
+
+            $user = auth()->user();
+            $user->band_id = $band->id;
+            $user->save();
+
+            return redirect('dash/band');
         }
+    }
+
+    public function showMedia()
+    {
+        return view('user.media')->with([
+            'band_id' => $this->userId ? $this->userId : auth()->user()->band_id
+        ]); 
     }
 }

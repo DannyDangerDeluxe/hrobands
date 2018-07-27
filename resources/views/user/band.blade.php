@@ -77,7 +77,32 @@
                     </form>
                 </div>
             @else
-                Band vorhanden    
+                <div class="show-band container">
+                    <div class="content-header">
+                        <div class="title">
+                            {{ $band['name'] }}
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <div class="inputs">
+                            @if($band['website'])
+                                <div class="website">
+                                    {{ $band['website'] }}
+                                </div>
+                            @endif
+                            @if($band['founded'])
+                                <div class="founded">
+                                    {{ $band['founded'] }}
+                                </div>
+                            @endif
+                            @if($band['description'])
+                                <div class="description">
+                                    {{ $band['description'] }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             @endif
         </div>
     </div>
