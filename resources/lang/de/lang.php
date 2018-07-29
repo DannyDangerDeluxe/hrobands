@@ -68,6 +68,8 @@ return [
 	'dash_media_undertitle' => 'Untertitel',
 	'dash_media_image' => 'Foto auswählen',
 	'dash_media_submit' => 'speichern',
+	'dash_media_first_upload_success' => 'Das Profilbild wurde gespeichert',
+	'dash_media_mult_upload_success' => 'Das Profilbild wurde überschrieben',
 
 	/* DEVELOPMENT */
 	'dev_title' => 'Development',

@@ -170,6 +170,9 @@ form{
 	margin-left: 1em !important;
 }
 
+.margin-md{
+	margin: 2.5em !important;
+}
 .margin-md-bottom{
 	margin-bottom: 2.5em !important;
 }
@@ -256,7 +259,7 @@ select{
 
 
 /***************************************
-			DASHBOARD LAYOUT
+		  DASHBOARD NAVIGATION
 ***************************************/
 
 /* NAVIGATION */
@@ -309,7 +312,19 @@ select{
 }
 
 
-/* BAND REGISTRATION */
+/***************************************
+	  DASHBOARD BAND REGISTRATION
+***************************************/
 .register-band .file-field .btn {
     line-height: 2.5em;
+}
+
+
+
+/***************************************
+			DASHBOARD MEDIA
+***************************************/
+.dash-media .user-image img{
+	width: 250px;
+	height:250px;
 }

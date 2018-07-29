@@ -29,12 +29,17 @@ class Media extends Model
         'name', 'path', 'alt', 'undertitle'
     ];
 
+    public function __construct(){
+        
+    }
+
     public function band()
     {
         return $this->belongsTo('App\Band');
     }
-
-    public function __construct(){
-    	
+    
+    public static function getMediaById($id)
+    {
+        return Media::find($id);
     }
 }

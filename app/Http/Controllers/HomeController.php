@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Band;
+use App\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -100,6 +101,7 @@ class HomeController extends Controller
     public function showMedia()
     {
         return view('user.media')->with([
+            'image' => auth()->user()->image_id ? Media::getMediaById(auth()->user()->image_id) : null,
             'band_id' => $this->userId ? $this->userId : auth()->user()->band_id
         ]); 
     }

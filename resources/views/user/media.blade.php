@@ -25,6 +25,21 @@
                 </div>
             @endif
 
+            @if($image)
+            <div class="row">
+                <div class="user-image col-xs-12 col-md-4">
+                    <img src="{{ asset($image['path']) }}" alt="{{ $image['alt'] }}">
+                </div>
+                <div class="user-image-info col-xs-12 col-md-8">
+                    <div><span class="name">Name: </span>{{ $image['name'] }}</div>
+                    <div><span class="alt">Alternative Text: </span>{{ $image['alt'] }}</div>
+                    <div><span class="undertitle">Untertitel: </span>{{ $image['undertitle'] }}</div>
+                </div>
+            </div>
+
+            <div class="divider margin-md"></div>
+            @endif
+
             <form action="{{ url('imageupload') }}" method="post" enctype="multipart/form-data" class="row">
                 @csrf
                 <input type="hidden" name="bandId" value="{{ $band_id }}">

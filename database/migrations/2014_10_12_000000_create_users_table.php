@@ -31,12 +31,13 @@ class CreateUsersTable extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('name')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('password')->nullable();
+            $table->rememberToken()->nullable();
             $table->timestamps();
             $table->integer('band_id')->nullable()->unsigned()->unique();
+            $table->integer('image_id')->nullable()->unsigned()->unique();
             /*
             $table->foreign('band_id')
                 ->references('id')
@@ -54,5 +55,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        // 
     }
 }
