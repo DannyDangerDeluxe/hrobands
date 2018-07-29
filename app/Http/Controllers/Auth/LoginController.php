@@ -70,10 +70,8 @@ class LoginController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255|min:3',
-            'band' => 'required|string|max:255|min:3',
             'email' => 'required|email|max:255',
-            'birthdate' => 'required|date',
-            'password' => 'required|min:6|max:255',
+            'password' => 'required|min:6|max:255|confirmed',
         ]);
     }
 }

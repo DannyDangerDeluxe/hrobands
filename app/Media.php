@@ -30,7 +30,6 @@ class Media extends Model
     ];
 
     public function __construct(){
-        
     }
 
     public function band()

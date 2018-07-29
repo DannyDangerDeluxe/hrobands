@@ -24,7 +24,7 @@ class ImageUploadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function imageUploadPost(Request $request)
+    public function userImageUpload(Request $request)
     {
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -33,6 +33,20 @@ class ImageUploadController extends Controller
             'undertitle' => 'nullable|string|max:255',
         ]);
 
+        $this>saveImage($request);
+
+        $user = auth()->user();
+        $user->image_id = $media->id;
+        $user->save();
+
+        $success = \Lang::get('app.dash_media_first_upload_success');
+        return redirect(url()->previous())
+            ->with('success',$success)
+            ->with('image',$imageName);
+    }
+
+    private function saveImage(Request $request)
+    {
         $imageName = time() .'_' .$request->image->getClientOriginalName();
 
         $media = Media::create();
@@ -41,15 +55,8 @@ class ImageUploadController extends Controller
         $media->alt = $request->input('alt') ? $request->input('alt') : null;
         $media->undertitle = $request->input('undertitle') ? $request->input('undertitle') : null;
         $request->image->move(public_path('images'), $imageName);
-        $user = auth()->user();
-        $user->image_id = $media->id;
-
         $media->save();
-        $user->save();
 
-        $success = \Lang::get('app.dash_media_first_upload_success');
-        return redirect(url()->previous())
-            ->with('success',$success)
-            ->with('image',$imageName);
+        return $media;
     }
 }

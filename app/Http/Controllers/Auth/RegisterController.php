@@ -91,21 +91,18 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
 
-        // validator error handling
         if ($validator->fails()) {
-            return redirect('register')
+            return redirect()->route('register')
                         ->withErrors($validator)
                         ->withInput();
 
-        // create and store user and redirect
         }else{
-            // not the right way
             $user = new User;
             $user->name = $request->input('name');
             $user->email = $request->input('email');
             $user->password = $request->input('password');
-
             $user->save();
+
             auth()->login($user);
         }
     }

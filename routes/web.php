@@ -51,4 +51,6 @@ Route::get('/dash/media', 'HomeController@showMedia');
 Route::get('/dash/settings', 'HomeController@showSettings');
 
 // media
-Route::post('imageupload','ImageUploadController@imageUploadPost');
+Route::post('userimageupload','ImageUploadController@userImageUpload');
+Route::post('bandimageupload','ImageUploadController@bandImageUpload');
+Route::post('gigimageupload','ImageUploadController@gigImageUpload');

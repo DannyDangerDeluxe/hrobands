@@ -37,10 +37,10 @@
                 </div>
             </div>
 
-            <div class="divider margin-md"></div>
+            <div class="divider margin-md-bottom margin-md-top"></div>
             @endif
 
-            <form action="{{ url('imageupload') }}" method="post" enctype="multipart/form-data" class="row">
+            <form action="{{ url('userimageupload') }}" method="post" enctype="multipart/form-data" class="row">
                 @csrf
                 <input type="hidden" name="bandId" value="{{ $band_id }}">
 

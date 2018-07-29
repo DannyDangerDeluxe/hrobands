@@ -51,7 +51,7 @@ class User extends Authenticatable
     }
     
 
-    public function __construct(){
-
+    public function __construct()
+    {
     }
 }
