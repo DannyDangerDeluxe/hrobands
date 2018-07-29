@@ -50,7 +50,8 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .title{
-	font-size: 18px;
+	font-size: 20px;
+	font-weight: bold !important;
 }
 
 
@@ -90,6 +91,14 @@ img{
 	width: 100%;
 }
 
+form{
+	margin-bottom: 0 !important;
+}
+
+.float-none{
+	float: none;
+}
+
 
 /***************************************
 			PADDING & MARGIN
@@ -126,6 +135,9 @@ img{
 	padding-left: 1em !important;
 }
 
+
+
+
 .no-margin{
 	margin: 0 !important;
 }
@@ -158,6 +170,15 @@ img{
 	margin-left: 1em !important;
 }
 
+.margin-md{
+	margin: 2.5em !important;
+}
+.margin-md-bottom{
+	margin-bottom: 2.5em !important;
+}
+
+
+
 .block{
 	display: block !important;
 }
@@ -165,6 +186,19 @@ img{
 	width: 100% !important;
 }
 
+
+
+
+/***************************************
+				BORDERS
+***************************************/
+.full-brdr{
+	border: 1px solid #abc;
+	border-radius: 5px;
+}
+.btm-brdr{
+	border-bottom: 1px solid #abc;
+}
 
 
 /***************************************
@@ -190,6 +224,14 @@ nav{
 
 
 /***************************************
+			   	  FORMS
+***************************************/
+select{
+	display: inherit;
+}
+
+
+/***************************************
 			   PAGE LAYOUT
 ***************************************/
 .content{
@@ -200,12 +242,13 @@ nav{
 
 .band-container{
 	padding: 0 1em 1em;
-	border: 1px solid #abc;
-	border-radius: 5px;
 }
 
 
-
+.header-image-title{
+	margin-top: -5em;
+	margin-left: 2em;
+}
 
 /***************************************
 		   LOGIN/REGISTER PAGE
@@ -215,3 +258,73 @@ nav{
 }
 
 
+/***************************************
+		  DASHBOARD NAVIGATION
+***************************************/
+
+/* NAVIGATION */
+
+.dashnav-wrapper{
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 5px;
+	webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+	margin-top: 0.5em;
+}
+
+.dashnav nav a{
+	color: #0D60FF;
+	width: 100%;
+	line-height: initial;
+	display: block;
+	padding: 1em;
+}
+
+.dashnav nav li{
+	margin-bottom: 0;
+	background-color: rgba(0, 0, 0, 0.03);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.dashnav nav li:first-child{
+	border-radius: 5px 5px 0 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.dashnav nav li:last-child{
+	border-bottom: none;
+	border-radius: 0 0 5px 5px;
+}
+
+.dashnav nav a:hover{
+	background-color: rgba(12, 145, 232, 0.25);
+	text-decoration: none;
+}
+
+
+.dashnav .title{
+	padding: 0.8em
+}
+
+.dashnav nav .active{
+	background-color: #0C91E8;
+	color: white;
+}
+
+
+/***************************************
+	  DASHBOARD BAND REGISTRATION
+***************************************/
+.register-band .file-field .btn {
+    line-height: 2.5em;
+}
+
+
+
+/***************************************
+			DASHBOARD MEDIA
+***************************************/
+.dash-media .user-image img{
+	width: 250px;
+	height:250px;
+}

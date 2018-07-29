@@ -3,7 +3,7 @@
 @include('shared.header')
 
 <main class="py-4 container">
-    @yield('content');
+    @yield('content')
 </main>
 
 @include('shared.footer')
