@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Band;
 use App\Media;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -11,8 +12,6 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
-    private $userId;
-
     /**
      * Create a new controller instance.
      *
@@ -35,14 +34,15 @@ class HomeController extends Controller
 
     public function showUserBand()
     {
-        $this->userId = auth()->user()->band_id;
+        $userId = auth()->user()->band_id;
+        $user = auth()->user();
 
-        if($this->userId){
-            $band = Band::find($this->userId);
+        if($userId){
+            $band = $user->band;
 
             return view('user.band')->with([
                 'band' => (array) $band->getAttributes(),
-                'band_id' => $this->userId,
+                'band_id' => $band->id,
             ]); 
         }else{            
             $genreArray = [];
@@ -101,55 +101,31 @@ class HomeController extends Controller
 
     public function showMedia()
     {
-        $bandImages = [];
         $user = auth()->user();
-        if($user->band_id){
-            $bandsMedia = DB::select('SELECT * FROM bands_media WHERE band_id = ' .$user->band_id);
+        $band = $user->band;
 
-            foreach($bandsMedia as $media){
-                if($media->band_id === $user->band_id){
-                    $image = DB::select('SELECT * FROM media WHERE id = ' .$media->media_id);
-                    $image = (array) array_first($image);
-                    $image['path'] = '/' .$image['path'];
-                    array_push($bandImages, $image);
-                }
-            }
-        }
         return view('user.media')->with([
-            'image' => auth()->user()->image_id ? Media::getMediaById(auth()->user()->image_id) : null,
+            'image' => $user->profileImage ? $user->profileImage: null,
             'user_id' => $user->id ? $user->id : null,
             'band_id' => $user->band_id ? $user->band_id : null,
-            'images' => $bandImages
+            'images' => $band->bandImages
         ]); 
     }
 
     public function showProfile()
     {
         $user = auth()->user();
-        $band = Band::find($user->band_id);
-        $image = auth()->user()->image_id ? Media::getMediaById(auth()->user()->image_id) : null;
-        $bandImages = [];
+        $band = $user->band;
+        $image = $user->profileImage;
+        $images = $user->userImages;
 
-        $bandsMedia = DB::select('SELECT * FROM users_media WHERE user_id = ' .$user->id);
-
-        if(isset($bandsMedia)){
-            foreach($bandsMedia as $media){
-                if($media->user_id === $user->id){
-                    $tempImg = DB::select('SELECT * FROM media WHERE id = ' .$media->media_id);
-                    $tempImg = (array) array_first($tempImg);
-                    $tempImg['path'] = '/' .$tempImg['path'];
-                    array_push($bandImages, $tempImg);
-                }
-            }
-        }
-
-        // dd($user, $band, $image);
+        // dd($user, $band, $image, $images);
 
         return view('user.profile')->with([
             'user' => $user,
             'band' => $band ? $band : null,
-            'image' => $image,
-            'images' => isset($bandImages[0]) ? $bandImages : null 
+            'image' => $image ? $image : null,
+            'images' => $images ? $images : null 
         ]);
     }
 

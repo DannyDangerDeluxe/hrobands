@@ -29,6 +29,16 @@ class Band extends Model
         'name', 'website', 'founded', 'description', 'genre_id', 'image_media_id'
     ];
 
+    public function users()
+    {
+        return $this->hasMany('App\User', 'band_id', 'id');
+    }
+
+    public function bandImages()
+    {
+        return $this->belongsToMany('App\Media', 'bands_media');
+    }
+
     public function __construct(){
 
     }

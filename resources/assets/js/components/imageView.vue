@@ -7,7 +7,7 @@
             <div class="img-galery padding-sm">
                 <div class="img-container">
                     <div class="img-preview" v-for="image in images">
-                        <img :src="image.path" :alt="image.alt">
+                        <img :src="'/' + image.path" :alt="image.alt">
                         <div class="name"><span class="title">{{ lang.image_name }}:</span> {{ image.name }}</div>
                         <div class="undertitle"><span class="title">{{ lang.image_undertitle }}:</span> {{ image.undertitle }}</div>
                     </div>

@@ -48452,7 +48452,7 @@ var render = function() {
           { staticClass: "img-container" },
           _vm._l(_vm.images, function(image) {
             return _c("div", { staticClass: "img-preview" }, [
-              _c("img", { attrs: { src: image.path, alt: image.alt } }),
+              _c("img", { attrs: { src: "/" + image.path, alt: image.alt } }),
               _vm._v(" "),
               _c("div", { staticClass: "name" }, [
                 _c("span", { staticClass: "title" }, [

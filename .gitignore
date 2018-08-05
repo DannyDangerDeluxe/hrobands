@@ -9,6 +9,7 @@
 /.idea
 /.vscode
 /.vagrant
+/_BACKUP
 Homestead.json
 Homestead.yaml
 npm-debug.log

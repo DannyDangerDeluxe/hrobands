@@ -32,9 +32,19 @@ class Media extends Model
     public function __construct(){
     }
 
-    public function band()
+    public function profileImage()
     {
-        return $this->belongsTo('App\Band');
+        return $this->hasOne('App\User', 'image_id', 'id');
+    }
+
+    public function bandImages()
+    {
+        return $this->belongsToMany('App\Band', 'bands_media');
+    }
+
+    public function userImages()
+    {
+        return $this->belongsToMany('App\User', 'users_media');
     }
     
     public static function getMediaById($id)
