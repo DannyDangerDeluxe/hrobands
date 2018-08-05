@@ -46,11 +46,15 @@ Route::get('/dash/home', 'HomeController@index')->name('home');
 Route::get('/dash/profile', 'HomeController@showProfile');
 Route::get('/dash/band', 'HomeController@showUserBand');
 Route::post('/dash/band/register', 'HomeController@registerBand');
-Route::get('/dash/gigs', 'HomeController@showGigs');
 Route::get('/dash/media', 'HomeController@showMedia');
 Route::get('/dash/settings', 'HomeController@showSettings');
 
 // media
 Route::post('userimageupload','ImageUploadController@userImageUpload');
-Route::post('bandimageupload','ImageUploadController@bandImageUpload');
+Route::post('profileimageupload','ImageUploadController@profileImageUpload');
+Route::post('/bandimageupload','ImageUploadController@bandImageUpload');
 Route::post('gigimageupload','ImageUploadController@gigImageUpload');
+
+// gigs
+Route::get('/dash/gigs', 'HomeController@showGigs');
+Route::post('/registergig', 'GigController@registerGig');

@@ -268,7 +268,7 @@ select{
 
 
 /***************************************
-		  DASHBOARD NAVIGATION
+			DASHBOARD GENERAL
 ***************************************/
 
 /* NAVIGATION */
@@ -320,6 +320,20 @@ select{
 	color: white;
 }
 
+/* BODY */
+.card div:not(:first-child) .card-header{
+	border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-header{
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.card-header h3{
+	margin-top: 10px;
+}
+
+
 
 /***************************************
 	  DASHBOARD BAND REGISTRATION
@@ -336,4 +350,15 @@ select{
 .dash-media .user-image img{
 	width: 250px;
 	height:250px;
+}
+
+
+
+/***************************************
+		   DASHBOARD PROFILE
+***************************************/
+.user-image{
+	border: 1px solid #abc;
+	float: right;
+	padding: 15px;
 }

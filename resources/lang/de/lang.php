@@ -13,8 +13,13 @@ return [
 	'news' => 'News',
 	'bands' => 'Bands',
 	'dev' => 'Development',
-	'dates' => 'Gigs',
+	'gigs' => 'Gigs',
 	'profile' => 'Profil',
+
+	'name' => 'Name',
+	'email' => 'eMail',
+	'image' => 'Bild',
+	'band' => 'Band',
 
 	/* FOOTER */
 	'impressum' => 'Impressum',
@@ -61,15 +66,19 @@ return [
 	'dash_band_reg_image' => 'Bandfoto',
 	'dash_band_reg_submit' => 'registrieren',
 
-	/* DASHBOARD UPLOAD MEDIA */
-	'dash_media_title' => 'Media',
-	'dash_media_name' => 'Name',
-	'dash_media_alt' => 'Alternativer Text',
-	'dash_media_undertitle' => 'Untertitel',
-	'dash_media_image' => 'Foto auswählen',
-	'dash_media_submit' => 'speichern',
-	'dash_media_first_upload_success' => 'Das Profilbild wurde gespeichert',
-	'dash_media_mult_upload_success' => 'Das Profilbild wurde überschrieben',
+	/* MEDIA */
+	'dash_media_title' => 'Dein Profilbild',
+	'upload_user_image_title' => 'Profilbild',
+	'upload_band_image_title' => 'Bandbilder',
+	'upload_gig_image_title' => 'Gigbilder',
+	'image_upload_title' => 'Bild hinzufügen',
+	'image_upload_name' => 'Name',
+	'image_upload_alt' => 'Alternativer Text',
+	'image_upload_undertitle' => 'Untertitel',
+	'image_upload_image' => 'Foto auswählen',
+	'image_upload_submit' => 'speichern',
+	'image_upload_success' => 'Das Bild wurde gespeichert',
+	'image_upload_mult_upload_success' => 'Das Bild wurde überschrieben',
 
 	/* DEVELOPMENT */
 	'dev_title' => 'Development',
@@ -88,6 +97,9 @@ return [
 	'dev_gig_img_alt' => 'Beschreibung vom Bild',
 	'dev_gig_submit' => 'Event eintragen',
 
+	/* GIGS */
+	'new_gig' => 'Neuen Gig erstellen',
+
 	/************************************************************
 							VUE COMPONENTS
 	************************************************************/
@@ -97,4 +109,10 @@ return [
 	'band_genre' => 'Genre',
 	'band_founded_year' => 'Gegründet',
 	'band_website' => 'Webseite',
+
+	/* IMAGE VIEW */
+	'image_name' => 'Name',
+	'image_path' => 'Pfad',
+	'image_undertitle' => 'Untertitel',
+	'image_alt' => 'Alternativer Text',
 ];

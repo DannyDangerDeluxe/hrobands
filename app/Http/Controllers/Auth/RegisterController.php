@@ -75,16 +75,7 @@ class RegisterController extends Controller
 
     protected function store(Request $request)
     {
-        $inputs = [
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-            'password_confirmation' => $request->input('password_confirmation')
-        ];
-
-        // $validate = $this->validator($inputs);
-        // dd($request->all()); exit;
-
+        // $validator = validator($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',

@@ -17,11 +17,13 @@
 					{{__('lang.dashnav_band')}}
 				</a>
 			</li>
-			<li>
-				<a href="{{ url('/dash/gigs') }}" class="title {{ Request::is('dash/gigs') ? 'active' : '' }}">
-					{{__('lang.dashnav_gigs')}}
-				</a>
-			</li>
+			@if(isset(auth()->user()->band_id))
+				<li>
+					<a href="{{ url('/dash/gigs') }}" class="title {{ Request::is('dash/gigs') ? 'active' : '' }}">
+						{{__('lang.gigs')}}
+					</a>
+				</li>
+			@endif
 			<li>
 				<a href="{{ url('/dash/media') }}" class="title {{ Request::is('dash/media') ? 'active' : '' }}">
 					{{__('lang.dashnav_media')}}
