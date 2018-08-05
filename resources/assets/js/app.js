@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+import coverflow from 'vue-coverflow'
 
 window.Vue = require('vue');
 
@@ -19,6 +20,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('latest-bands', require('./components/LatestBands.vue'));
 Vue.component('image-upload', require('./components/ImageUpload.vue'));
 Vue.component('image-view', require('./components/ImageView.vue'));
+Vue.component(coverflow.name, coverflow);
 
 const app = new Vue({
     el: '#app'

@@ -39,10 +39,12 @@ class HomeController extends Controller
 
         if($userId){
             $band = $user->band;
+            $images = $band->bandImages;
 
             return view('user.band')->with([
                 'band' => (array) $band->getAttributes(),
                 'band_id' => $band->id,
+                'bandImages' => $images
             ]); 
         }else{            
             $genreArray = [];
@@ -108,7 +110,8 @@ class HomeController extends Controller
             'image' => $user->profileImage ? $user->profileImage: null,
             'user_id' => $user->id ? $user->id : null,
             'band_id' => $user->band_id ? $user->band_id : null,
-            'images' => $band->bandImages
+            'userImages' => $user->userImages,
+            'bandImages' => $band->bandImages
         ]); 
     }
 

@@ -50,10 +50,26 @@
             title="Profilbild Upload"
         ></image-upload>
     </div>
+    <div class="card">
+        <image-view 
+            :images="{{ json_encode($userImages) }}"
+            :lang="{{ json_encode( __('lang') ) }}"
+            title="Profilbilder"
+        ></image-view>
+    </div>
+    <div class="card">
+        <image-upload
+            id_label="user_id"
+            :id="{{ $user_id }}"
+            url="{{ url('profileImageUpload') }}"
+            :lang="{{ json_encode( __('lang') ) }}"
+            title="Profilbilder Upload"
+        ></image-upload>
+    </div>
     @if(isset($band_id))
         <div class="card">
             <image-view 
-                :images="{{ json_encode($images) }}"
+                :images="{{ json_encode($bandImages) }}"
                 :lang="{{ json_encode( __('lang') ) }}"
                 title="Band Bilder"
             ></image-view>
@@ -71,7 +87,7 @@
     @if(isset($gig_id))
         <div class="card">
             <image-view 
-                images=null
+                images="{{ json_encode($gigImages) }}"
                 :lang="{{ json_encode( __('lang') ) }}"
                 title="Gig Bilder"
             ></image-view>

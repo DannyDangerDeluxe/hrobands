@@ -13976,13 +13976,16 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(57);
+module.exports = __webpack_require__(62);
 
 
 /***/ }),
 /* 13 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_coverflow__ = __webpack_require__(56);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13991,6 +13994,7 @@ module.exports = __webpack_require__(57);
  */
 
 __webpack_require__(14);
+
 
 window.Vue = __webpack_require__(37);
 
@@ -14004,6 +14008,7 @@ Vue.component('example-component', __webpack_require__(40));
 Vue.component('latest-bands', __webpack_require__(43));
 Vue.component('image-upload', __webpack_require__(46));
 Vue.component('image-view', __webpack_require__(49));
+Vue.component(__WEBPACK_IMPORTED_MODULE_0_vue_coverflow__["a" /* default */].name, __WEBPACK_IMPORTED_MODULE_0_vue_coverflow__["a" /* default */]);
 
 var app = new Vue({
   el: '#app'
@@ -47977,7 +47982,7 @@ var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(55)
 /* template */
-var __vue_template__ = __webpack_require__(56)
+var __vue_template__ = __webpack_require__(61)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48404,6 +48409,7 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_coverflow__ = __webpack_require__(56);
 //
 //
 //
@@ -48423,17 +48429,354 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'imageView',
     props: ['images', 'lang', 'title'],
     mounted: function mounted() {
         console.log('Component Image View mounted.');
+    },
+
+    components: {
+        coverflow: __WEBPACK_IMPORTED_MODULE_0_vue_coverflow__["a" /* default */]
+    },
+    computed: {
+        coverflowImages: function coverflowImages(images) {
+            return this.images.map(function (image) {
+                return {
+                    cover: '/' + image.path,
+                    title: image.name
+                };
+            });
+        }
+    },
+    data: function data() {
+        return {
+            coverList: this.coverflowImages
+        };
     }
 });
 
 /***/ }),
 /* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Coverflow_vue__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Coverflow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Coverflow_vue__);
+
+
+__WEBPACK_IMPORTED_MODULE_0__Coverflow_vue___default.a.install = (Vue) => {
+  Vue.component(__WEBPACK_IMPORTED_MODULE_0__Coverflow_vue___default.a.name, __WEBPACK_IMPORTED_MODULE_0__Coverflow_vue___default.a)
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__Coverflow_vue___default.a);
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(58)
+/* template */
+var __vue_template__ = __webpack_require__(60)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "node_modules\\vue-coverflow\\lib\\Coverflow.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-dd4fd9a8", Component.options)
+  } else {
+    hotAPI.reload("data-v-dd4fd9a8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__directives_coverflow__ = __webpack_require__(59);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'coverflow',
+  data: function data() {
+    return {
+      coverIndex: 0
+    };
+  },
+
+  props: {
+    coverList: {
+      type: Array,
+      required: true
+    },
+    width: {
+      type: Number,
+      default: 980
+    },
+    bgColor: {
+      type: String,
+      default: 'transparent'
+    },
+    index: {
+      type: Number,
+      default: 0
+    },
+    coverWidth: {
+      type: Number,
+      default: 100
+    },
+    coverHeight: {
+      type: Number,
+      default: 0
+    },
+    coverSpace: {
+      type: Number,
+      default: 50
+    },
+    coverShadow: {
+      type: Boolean,
+      default: false
+    },
+    coverFlat: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    handleChange: function handleChange(index) {
+      this.coverIndex = index;
+      this.$emit('change', index);
+    }
+  },
+  directives: {
+    coverflow: __WEBPACK_IMPORTED_MODULE_0__directives_coverflow__["a" /* default */]
+  }
+});
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function setTransform3D (el, degree, perspective, z) {
+  degree = Math.max(Math.min(degree, 90), -90)
+  z -= 5
+  el.style['-webkit-perspective'] = el.style['perspective'] = el.style['-moz-perspective'] = perspective + 'px'
+  el.style['-webkit-transform'] = el.style['transform'] = 'rotateY(' + degree + 'deg) translateZ(' + z + 'px)'
+}
+
+function displayIndex (imgSize, spacing, left, imgs, index, flat, width, titleBox, vnode) {
+  var mLeft = (width - imgSize) * 0.5 - spacing * (index + 1) - imgSize * 0.5
+
+  for (var i = 0; i <= index; i++) {
+    imgs[i].style.left = (left + i * spacing + spacing) + 'px'
+    imgs[i].style.marginLeft = mLeft + 'px'
+    imgs[i].style['-webkit-filter'] = 'brightness(0.65)'
+    imgs[i].style.zIndex = i + 1
+    setTransform3D(imgs[i], flat ? 0 : ((index - i) * 10 + 45), 300, flat ? -(index - i) * 10 : (-(index - i) * 30 - 20))
+  }
+
+  imgs[index].style['-webkit-filter'] = 'none'
+  imgs[index].style.marginLeft = (mLeft + imgSize * 0.5) + 'px'
+  imgs[index].style.zIndex = imgs.length
+  titleBox.style.visibility = 'hidden'
+
+  if (vnode.context.coverList[index].title) {
+    titleBox.style.visibility = 'visible'
+    var info = vnode.context.coverList[index].title
+    titleBox.innerHTML = info
+    titleBox.style.left = (left + index * spacing + spacing + 10) + 'px'
+    titleBox.style.marginLeft = (mLeft + imgSize * 0.5) + 'px'
+  }
+
+  setTransform3D(imgs[index], 0, 0, 5)
+
+  for (var j = index + 1; j < imgs.length; ++j) {
+    imgs[j].style.left = (left + j * spacing + spacing) + 'px'
+    imgs[j].style.marginLeft = (mLeft + imgSize) + 'px'
+    imgs[j].style['-webkit-filter'] = 'brightness(0.7)'
+    imgs[j].style.zIndex = imgs.length - j
+    setTransform3D(imgs[j], flat ? 0 : ((index - j) * 10 - 45), 300, flat ? (index - j) * 10 : ((index - j) * 30 - 20))
+  }
+
+  if (vnode.context.coverIndex !== index) {
+    vnode.context.handleChange(index)
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  bind: function (el, binding, vnode) {
+    var imgSize = parseInt(vnode.context.coverWidth)
+    var spacing = parseInt(vnode.context.coverSpace)
+    var shadow = vnode.context.coverShadow
+    var bgColor = vnode.context.bgColor
+    var flat = vnode.context.coverFlat
+    var width = vnode.context.width
+    var index = vnode.context.index
+    vnode.context.coverIndex = index
+    var imgHeight = Math.max(vnode.context.coverHeight, vnode.context.coverWidth)
+    var imgs = []
+    var placeholding
+
+    for (var i = 0; i < el.childNodes.length; ++i) {
+      imgs.push(el.childNodes[i])
+    }
+
+    for (var j = 0; j < imgs.length; j++) {
+      imgs[j].style.position = 'absolute'
+      imgs[j].style.width = imgSize + 'px'
+      imgs[j].style.height = 'auto'
+      imgs[j].style.bottom = '60px'
+      imgs[j].style.transition = 'transform .4s ease, margin-left .4s ease, -webkit-filter .4s ease'
+    }
+
+    el.style.overflowX = 'hidden'
+    el.style.backgroundColor = bgColor
+
+    var titleBox = document.createElement('SPAN')
+
+    if (!shadow) {
+      titleBox.className = 'coverflow-title-box'
+      titleBox.style.position = 'absolute'
+      titleBox.style.width = (imgSize - 20) + 'px'
+      titleBox.style.height = '20px'
+      titleBox.style.lineHeight = '20px'
+      titleBox.style.fontSize = '14px'
+      titleBox.style.padding = '0 3px'
+      titleBox.style.color = '#222'
+      titleBox.style.background = '#ddd'
+      titleBox.style.borderRadius = '10px'
+      titleBox.style.fontWeight = 'normal'
+      titleBox.style.fontFamily = '"Helvetica Neue", Helvetica, Arial, sans-serif'
+      titleBox.style.bottom = '28px'
+      titleBox.style.textAlign = 'center'
+      titleBox.style.display = 'block'
+      el.appendChild(titleBox)
+    }
+
+    setTransform3D(el, 0, 600, 0)
+    placeholding = document.createElement('DIV')
+    placeholding.style.width = width * 2 + 'px'
+    placeholding.style.height = '1px'
+    el.appendChild(placeholding)
+
+    el.style.width = width + 'px'
+
+    if (shadow) {
+      el.style.height = (imgHeight * 2 + 80) + 'px'
+      el.style['-webkit-perspective-origin'] = el.style['perspective-origin'] = el.style['-moz-perspective-origin'] = '50% 25%'
+
+      for (var k = 0; k < imgs.length; k++) {
+        imgs[k].style.bottom = (20 + imgHeight) + 'px'
+        imgs[k].style['-webkit-box-reflect'] = 'below 0 -webkit-gradient(linear, 30% 20%, 30% 100%, from(transparent), color-stop(0.3, transparent), to(rgba(0, 0, 0, 0.8)))'
+      }
+    } else {
+      el.style.height = (imgHeight + 80) + 'px'
+    }
+
+    el.style.position = 'relative'
+
+    displayIndex(imgSize, spacing, el.scrollLeft, imgs, index, flat, parseInt(el.style.width), titleBox, vnode)
+
+    function handleClick (event) {
+      if (event.target && event.target.nodeName.toUpperCase() === 'IMG') {
+        var index = imgs.indexOf(event.target)
+
+        displayIndex(imgSize, spacing, el.scrollLeft, imgs, index, flat, parseInt(el.style.width), titleBox, vnode)
+      }
+    }
+
+    el.addEventListener('click', handleClick, false)
+
+    el.$destroy = () => {
+      el.removeEventListener('click', handleClick, false)
+    }
+  },
+  unbind: function (el) {
+    el.$destroy()
+  }
+});
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      directives: [{ name: "coverflow", rawName: "v-coverflow" }],
+      staticClass: "coverflow"
+    },
+    _vm._l(_vm.coverList, function(coverItem, index) {
+      return _c("img", { key: index, attrs: { src: coverItem.cover } })
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-dd4fd9a8", module.exports)
+  }
+}
+
+/***/ }),
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -48445,33 +48788,21 @@ var render = function() {
       _c("h3", [_vm._v(_vm._s(_vm.title))])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "img-galery padding-sm" }, [
-        _c(
-          "div",
-          { staticClass: "img-container" },
-          _vm._l(_vm.images, function(image) {
-            return _c("div", { staticClass: "img-preview" }, [
-              _c("img", { attrs: { src: "/" + image.path, alt: image.alt } }),
-              _vm._v(" "),
-              _c("div", { staticClass: "name" }, [
-                _c("span", { staticClass: "title" }, [
-                  _vm._v(_vm._s(_vm.lang.image_name) + ":")
-                ]),
-                _vm._v(" " + _vm._s(image.name))
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "undertitle" }, [
-                _c("span", { staticClass: "title" }, [
-                  _vm._v(_vm._s(_vm.lang.image_undertitle) + ":")
-                ]),
-                _vm._v(" " + _vm._s(image.undertitle))
-              ])
-            ])
-          })
-        )
-      ])
-    ])
+    _c(
+      "div",
+      { staticClass: "card-body" },
+      [
+        _c("coverflow", {
+          attrs: {
+            coverList: _vm.coverflowImages,
+            coverWidth: 260,
+            index: 1,
+            width: 846
+          }
+        })
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -48485,7 +48816,7 @@ if (false) {
 }
 
 /***/ }),
-/* 57 */
+/* 62 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

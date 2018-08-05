@@ -4,6 +4,7 @@
             <h3>{{ title }}</h3>
         </div>
         <div class="card-body">
+            <!--
             <div class="img-galery padding-sm">
                 <div class="img-container">
                     <div class="img-preview" v-for="image in images">
@@ -13,16 +14,38 @@
                     </div>
                 </div>
             </div>
+            -->
+            <coverflow :coverList="coverflowImages" :coverWidth="260" :index="1" :width="846"></coverflow>
         </div>
     </div>
 </template>
 
 <script>
+    import coverflow from 'vue-coverflow';
+    
     export default {
         name: 'imageView',
         props: ['images', 'lang', 'title'],
         mounted() {
             console.log('Component Image View mounted.');
+        },
+        components: {
+            coverflow
+        },
+        computed: {
+            coverflowImages: function(images){
+                return this.images.map(function(image){
+                    return {
+                        cover: '/' + image.path,
+                        title: image.name
+                    }
+                });
+            }
+        },
+        data () {
+            return {
+            coverList: this.coverflowImages
+            }
         }
     }
 </script>

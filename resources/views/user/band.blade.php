@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('dashcontent')
-    <div class="card">
-        <div class="dash dash-band">
+    <div class="dash dash-band" id="app">
+        <div class="card">
             <div class="card-header title">
                 Band
                 <span class="badge right">
@@ -105,6 +105,23 @@
                     </div>
                 @endif
             </div>
+        </div>
+
+        <div class="card">
+            <image-view 
+                :images="{{ json_encode($bandImages) }}"
+                :lang="{{ json_encode( __('lang') ) }}"
+                title="Band Bilder"
+            ></image-view>
+        </div>
+        <div class="card">
+            <image-upload
+                id_label="band_id"
+                :id="{{ $band['id'] }}"
+                url="{{ url('bandimageupload') }}"
+                :lang="{{ json_encode( __('lang') ) }}"
+                title="Band Bilder Upload"
+            ></image-upload>
         </div>
     </div>
 @endsection
