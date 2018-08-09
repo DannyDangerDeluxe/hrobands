@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Band;
+use App\Gig;
 use App\Media;
 use App\User;
 use Illuminate\Http\Request;
@@ -136,10 +137,24 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $bandId = $user->band_id ? $user->band_id : null;
+        $gigs = null;
+        $images = [];
+        if($bandId){
+            $gigs = Gig::where(['user_id' => $user->id, 'band_one_id' => $bandId])->get();
+            if($gigs){
+                foreach($gigs as $gig){
+                    array_push($images, $gig->gigImage);
+                }
+            }
+        }
+
+        // dd($images);
 
         return view('user.gigs')->with([
             'user' => $user,
-            'bandId' => $bandId
+            'bandId' => $bandId,
+            'gigs' => $gigs,
+            'images' => $images
         ]);
     }
 }

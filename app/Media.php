@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
+    protected $primaryKey = 'id';
+
     /**
      * Indicates if the model should be timestamped.
      *
@@ -45,6 +47,11 @@ class Media extends Model
     public function userImages()
     {
         return $this->belongsToMany('App\User', 'users_media');
+    }
+
+    public function gigImage()
+    {
+        return $this->belongsTo('App\Gig', 'id', 'image_id');
     }
     
     public static function getMediaById($id)

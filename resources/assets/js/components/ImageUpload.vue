@@ -1,9 +1,9 @@
 <template>
     <div class="image-upload">
         <div class="card-header">
-            <h3>{{ title }}</h3>
+            <h3><a data-toggle="collapse" :href="'#' + id_label" role="button" aria-expanded="false" :aria-controls="id_label">{{ title }}</a></h3>
         </div>
-        <div class="card-body">
+        <div :id="id_label" class="card-body collapse">
             <div class="form upload-media container">
                 <form :action="url" method="post" enctype="multipart/form-data" class="row">
                     <input type="hidden" name="_token" :value="csrf">

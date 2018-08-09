@@ -2,29 +2,39 @@
 
 @section('dashcontent')
     <div id="app" class="dash dash-gigs">
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        
+        @if($gigs)
+            <gig-list
+                :lang="{{ json_encode( __('lang') ) }}"
+                title="Gig Liste"
+                :gigs="{{ json_encode($gigs) }}"
+                :images="{{ json_encode($images) }}"
+            ></gig-list>
+        @endif
+
         <div class="card">
             <div class="card-header title">
-                @lang('lang.new_gig')
+                <a data-toggle="collapse" href="#registerGig" role="button" aria-expanded="false">@lang('lang.new_gig')</a>
             </div>
-            @if ($message = Session::get('success'))
-                <div class="alert alert-success alert-block">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong>{{ $message }}</strong>
-                </div>
-            @endif
 
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <div class="card-body">
+            <div id="registerGig" class="card-body collapse">
                 <form action="/registergig" method="POST" enctype="multipart/form-data" class="gig-form">
                     @csrf
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
@@ -91,6 +101,21 @@
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text">
                         </div>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-6 float-left">
+                        <label>Bildname</label>
+                        <input type="text" name="imagename">
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-6 float-left">
+                        <label>Alternativer Text</label>
+                        <input type="text" name="alt">
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-6 float-left">
+                        <label>Untertitel</label>
+                        <input type="text" name="undertitle">
                     </div>
 
                     <div class="form-group margin-sm full-width">

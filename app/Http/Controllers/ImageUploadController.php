@@ -96,12 +96,12 @@ class ImageUploadController extends Controller
             ->with('success',$success);
     }
 
-    private function saveImage(Request $request)
+    public function saveImage(Request $request, string $inputname='name')
     {
-        $imageName = time() .'_' .$request->image->getClientOriginalName();
+        $imageName = time() .'_' .camel_case($request->image->getClientOriginalName());
 
-        $media = Media::create();
-        $media->name = $request->input('name');
+        $media = new Media;
+        $media->name = $request->input($inputname);
         $media->path = 'images/' . $imageName;
         $media->alt = $request->input('alt') ? $request->input('alt') : null;
         $media->undertitle = $request->input('undertitle') ? $request->input('undertitle') : null;

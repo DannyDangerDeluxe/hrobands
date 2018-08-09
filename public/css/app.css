@@ -382,6 +382,35 @@ select {
   padding: 15px;
 }
 
+/***************************************
+		     DASHBOARD GIGS
+***************************************/
+
+.gig-list .preview {
+  border: 1px solid #abc;
+  border-radius: 5px;
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.gig-list .preview .data {
+  display: inline-block;
+}
+
+.gig-list .preview .data .name {
+  border-bottom: 1px solid #abc;
+  width: 100%;
+}
+
+.gig-list .preview .image {
+  border-left: 1px solid #abc;
+  display: inline-block;
+  max-height: 150px;
+  overflow: hidden;
+}
+
 /*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors

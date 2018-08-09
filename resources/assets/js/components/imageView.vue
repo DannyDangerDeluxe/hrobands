@@ -44,7 +44,7 @@
         },
         data () {
             return {
-            coverList: this.coverflowImages
+                coverList: this.coverflowImages
             }
         }
     }

@@ -15,7 +15,7 @@
 Route::get('/', 'IndexController@showHome');
 
 Route::view('/bands', 'bands'); 
-Route::view('/dates', 'dates');
+Route::view('/gigs', 'dates');
 Route::view('/news', 'news'); 
 
 Route::get('/imprint', 'IndexController@showFaq');

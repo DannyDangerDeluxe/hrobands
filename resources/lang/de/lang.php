@@ -21,6 +21,13 @@ return [
 	'image' => 'Bild',
 	'band' => 'Band',
 
+	'place' => 'Ort',
+	'date' => 'Datum',
+	'openDoors' => 'Einlass',
+	'price' => 'Preis',
+	'desc' => 'Beschreibung',
+	'read_more' => 'Weiterlesen',
+
 	/* FOOTER */
 	'impressum' => 'Impressum',
 	'policy' => 'Datenschutz',
@@ -99,6 +106,7 @@ return [
 
 	/* GIGS */
 	'new_gig' => 'Neuen Gig erstellen',
+	'gig_save_success' => 'Der Gig wurde erfolgreich gespeichert',
 
 	/************************************************************
 							VUE COMPONENTS

@@ -24,12 +24,13 @@ class CreateGigsTable extends Migration
             $table->date('date');
             $table->time('open_doors')->nullable();
             $table->decimal('price', 10, 2)->nullable();
-            $table->longtext('price', 5000)->nullable();
+            $table->longtext('description', 5000)->nullable();
             $table->string('link', 255)->nullable();
             $table->string('band_one_id')->unsigned()->unique();
             $table->string('band_two_id')->nullable()->unsigned()->unique();
             $table->string('band_three_id')->nullable()->unsigned()->unique();
             $table->string('user_id')->unsigned()->unique();
+            $table->string('image_id')->nullable()->unsigned()->unique();
         });
     }
 

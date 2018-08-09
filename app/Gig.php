@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gig extends Model
 {
+	protected $primaryKey = 'id';
+
 	/**
      * Indicates if the model should be timestamped.
      *
@@ -22,7 +24,8 @@ class Gig extends Model
         'name', 'location', 'street', 'number', 
         'zip', 'city', 'date', 'open_doors', 
         'price', 'text', 'link', 'band_one_id', 
-        'band_two_id', 'band_three_id', 'user_id'
+        'band_two_id', 'band_three_id', 'user_id', 
+        'image_id'
     ];
 
     /**
@@ -31,4 +34,9 @@ class Gig extends Model
      * @var string
      */
     protected $table = 'gigs';
+
+    public function gigImage()
+    {
+        return $this->hasOne('App\Media', 'id', 'image_id');
+    }
 }
