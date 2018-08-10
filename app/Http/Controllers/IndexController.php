@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Gig;
 use Prismic\Api;
 use Prismic\LinkResolver;
 use Prismic\Predicates;
@@ -88,6 +89,20 @@ class IndexController extends Controller
         return view('impressum')->with([
             'faq_title' => $document->title[0]->text,
             'faq_content' => $faq
+        ]);
+    }
+
+    public function showGigs()
+    {
+        $images = [];
+        $gigs = Gig::all();
+        foreach($gigs as $gig){
+            array_push($images, $gig->gigImage);
+        }
+
+        return view('content.gigs')->with([
+            'gigs' => $gigs,
+            'images' => $images
         ]);
     }
 }

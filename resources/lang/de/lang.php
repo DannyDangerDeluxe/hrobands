@@ -26,6 +26,7 @@ return [
 	'openDoors' => 'Einlass',
 	'price' => 'Preis',
 	'desc' => 'Beschreibung',
+	'link' => 'Link',
 	'read_more' => 'Weiterlesen',
 
 	/* FOOTER */

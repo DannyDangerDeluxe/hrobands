@@ -2,6 +2,6 @@
 
 @section('content')
 	<div class="content">
-	    <h1>Dates</h1>
+	    <h1>Gigs</h1>
 	</div>
 @endsection

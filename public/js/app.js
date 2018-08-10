@@ -48927,27 +48927,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'gigList',
-    props: ['lang', 'title', 'gigs', 'images'],
-    computed: {
-        fullGigs: function fullGigs() {
-            var _this = this;
+  name: 'gigList',
+  props: ['lang', 'title', 'gigs', 'images'],
+  computed: {
+    fullGigs: function fullGigs() {
+      var _this = this;
 
-            return this.gigs.map(function (gig, i) {
-                return {
-                    gig: gig,
-                    image: _this.images[i]
-                };
-            });
-        }
+      return this.gigs.map(function (gig, i) {
+        var tmpDate = gig.date.split('-');
+        return {
+          gig: gig,
+          image: _this.images[i],
+          date: tmpDate[2] + ". " + tmpDate[1] + ". " + tmpDate[0]
+        };
+      });
     },
-    created: function created() {
-        console.log('Component GigList created');
-        console.log(this.gigs);
-        console.log(this.images);
+    fullFutureGigs: function fullFutureGigs() {
+      // buggy
+      return this.gigs.filter(function (gig, i) {
+        var nowDate = new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate();
+        console.log(nowDate);
+        if (gig.date <= nowDate) {
+          return true;
+        }
+      });
     }
+  },
+  created: function created() {
+    console.log('Component GigList created');
+    console.log(this.gigs);
+    console.log(this.images);
+    console.log(new Date());
+    console.log(this.fullFutureGigs);
+  }
 });
 
 /***/ }),
@@ -49003,13 +49022,13 @@ var render = function() {
                       "\n\t\t\t\t\t\t\t" +
                         _vm._s(_vm.lang.date) +
                         ": " +
-                        _vm._s(gig.gig.date) +
+                        _vm._s(gig.date) +
                         "\n\t\t\t\t\t\t"
                     )
                   ]
                 ),
                 _vm._v(" "),
-                gig.gig.price
+                gig.gig.open_doors
                   ? _c(
                       "div",
                       {
@@ -49047,7 +49066,7 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                gig.gig.price
+                gig.gig.description
                   ? _c(
                       "div",
                       {
@@ -49064,7 +49083,36 @@ var render = function() {
                         )
                       ]
                     )
-                  : _vm._e()
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "form-group no-margin no-padding margin-sm-right col-xs-12"
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-primary margin-sm-right",
+                        attrs: { href: "#" }
+                      },
+                      [_vm._v(_vm._s(_vm.lang.read_more))]
+                    ),
+                    _vm._v(" "),
+                    gig.gig.link
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { href: gig.gig.link }
+                          },
+                          [_vm._v(_vm._s(_vm.lang.link))]
+                        )
+                      : _vm._e()
+                  ]
+                )
               ])
             ]),
             _vm._v(" "),

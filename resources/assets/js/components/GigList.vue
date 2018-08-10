@@ -15,16 +15,21 @@
 								{{ lang.place }}: {{ gig.gig.location }}
 							</div>
 							<div class="form-group no-margin no-padding col-xs-12 col-md-6 float-left">
-								{{ lang.date }}: {{ gig.gig.date }}
+								{{ lang.date }}: {{ gig.date }}
 							</div>
-							<div v-if="gig.gig.price" class="form-group no-margin no-padding col-xs-12 col-md-6 float-left">
+							<div v-if="gig.gig.open_doors" class="form-group no-margin no-padding col-xs-12 col-md-6 float-left">
 								{{ lang.openDoors }}: {{ gig.gig.open_doors }} 
 							</div>
 							<div v-if="gig.gig.price" class="form-group no-margin no-padding col-xs-12 col-md-6 float-left">
 								{{ lang.price }}: {{ gig.gig.price }} 
 							</div>
-							<div v-if="gig.gig.price" class="form-group no-margin no-padding col-xs-12 col-md-12">
+							<div v-if="gig.gig.description" class="form-group no-margin no-padding col-xs-12 col-md-12">
 								{{ lang.desc }}: {{ gig.gig.description }} 
+							</div>
+
+							<div class="form-group no-margin no-padding margin-sm-right col-xs-12">
+								<a href="#" class="btn btn-primary margin-sm-right">{{ lang.read_more }}</a>
+								<a v-if="gig.gig.link" :href="gig.gig.link" class="btn btn-primary">{{ lang.link }}</a>
 							</div>
 						</div>
 					</div>
@@ -45,17 +50,31 @@
         computed: {
         	fullGigs () {
         		return this.gigs.map((gig, i) => {
+					let tmpDate = gig.date.split('-');
 					return {
 						gig: gig,
-						image: this.images[i]
+						image: this.images[i],
+						date: tmpDate[2] + ". " + tmpDate[1] + ". " + tmpDate[0]
 					}
 				})
-        	}
+        	},
+        	fullFutureGigs () {
+        		// buggy
+        		return this.gigs.filter((gig, i) => {
+					let nowDate = new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate();
+					console.log(nowDate);
+					if(gig.date <= nowDate){
+						return true;
+					}
+				});
+        	},
         },
         created: function() {
         	console.log('Component GigList created');
         	console.log(this.gigs);
         	console.log(this.images);
+        	console.log(new Date());
+        	console.log(this.fullFutureGigs);
         }
     }
 </script>
