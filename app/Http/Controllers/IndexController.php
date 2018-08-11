@@ -134,9 +134,9 @@ class IndexController extends Controller
 
         return view('content.band_detail')->with([
             'band' => $band,
-            '$image' => $image,
-            '$images' => $images,
-            '$genre' => $genre,
+            'image' => $image,
+            'images' => $images,
+            'genre' => $genre,
         ]);
     }
 }

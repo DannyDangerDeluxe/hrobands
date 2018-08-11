@@ -1,41 +1,41 @@
 @extends('layouts/common')
 
 @section('content')
-	<div class="gig-detail">
+	<div class="band-detail">
 		<div class="container">
 			<div class="row">
 				<div class="card col-xs-12 col-lg-12 no-padding">
 					<div class="card-header col-xs-12 col-lg-12">
-						<h4 class="no-padding no-margin">{{ $gig->name }}</h4>
+						<h4 class="no-padding no-margin">{{ $band->name }}</h4>
 					</div>
 					<div class="card-body col-xs-12 col-lg-12">
-						@if($gig->website)
+						@if($band->website)
 							<div class="info col-xs-12 col-sm-6 ">
-								<p class="no-padding no-margin">{{ $gig->website }}</p>
+								<p class="no-padding no-margin">{{ $band->website }}</p>
 							</div>
 						@endif
 
-						@if($gig->website)
+						@if($band->founded)
 							<div class="info col-xs-12 col-sm-6 ">
-								<p class="no-padding no-margin">{{ $gig->website }}</p>
+								<p class="no-padding no-margin">{{ $band->founded }}</p>
 							</div>
 						@endif
 
-						@if($gig->description)
+						@if($band->description)
 							<div class="info col-xs-12 col-sm-6 ">
-								<p class="no-padding no-margin">am {{ $gig->description }}</p>
-							</div>
-						@endif
-
-						@if($gig->genre)
-							<div class="info col-xs-12 col-sm-6 ">
-								<p class="no-padding no-margin">{{ $gig->genre }} Uhr</p> 
+								<p class="no-padding no-margin">{{ $band->description }}</p>
 							</div>
 						@endif
 
 						@if($genre)
 							<div class="info col-xs-12 col-sm-6 ">
-								<p class="no-padding no-margin">{{ $genre->path }} €</p>
+								<p class="no-padding no-margin">{{ $genre->name }}</p> 
+							</div>
+						@endif
+
+						@if($image)
+							<div class="info col-xs-12 col-sm-6 ">
+								<p class="no-padding no-margin">{{ $image->path }} €</p>
 							</div>
 						@endif
 					</div>
