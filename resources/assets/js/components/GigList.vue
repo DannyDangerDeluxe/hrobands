@@ -28,7 +28,7 @@
 							</div>
 
 							<div class="form-group no-margin no-padding margin-sm-right col-xs-12">
-								<a href="#" class="btn btn-primary margin-sm-right">{{ lang.read_more }}</a>
+								<a :href="'/gigs/' + gig.gig.id" class="btn btn-primary margin-sm-right">{{ lang.read_more }}</a>
 								<a v-if="gig.gig.link" :href="gig.gig.link" class="btn btn-primary">{{ lang.link }}</a>
 							</div>
 						</div>

@@ -2,11 +2,11 @@
 
 @section('content')
 	<div id="app" class="content">
-	    <gig-list
+	    <band-list
             :lang="{{ json_encode( __('lang') ) }}"
-            title="Gig Liste"
-            :gigs="{{ json_encode($gigs) }}"
+            title="Band Liste"
+            :bands="{{ json_encode($bands) }}"
             :images="{{ json_encode($images) }}"
-        ></gig-list>
+        ></band-list>
 	</div>
 @endsection

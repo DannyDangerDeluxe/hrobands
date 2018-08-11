@@ -14025,6 +14025,7 @@ Vue.component('latest-bands', __webpack_require__(48));
 Vue.component('image-upload', __webpack_require__(51));
 Vue.component('image-view', __webpack_require__(54));
 Vue.component('gig-list', __webpack_require__(62));
+Vue.component('band-list', __webpack_require__(69));
 Vue.component(__WEBPACK_IMPORTED_MODULE_0_vue_coverflow__["a" /* default */].name, __WEBPACK_IMPORTED_MODULE_0_vue_coverflow__["a" /* default */]);
 
 var app = new Vue({
@@ -49096,7 +49097,7 @@ var render = function() {
                       "a",
                       {
                         staticClass: "btn btn-primary margin-sm-right",
-                        attrs: { href: "#" }
+                        attrs: { href: "/gigs/" + gig.gig.id }
                       },
                       [_vm._v(_vm._s(_vm.lang.read_more))]
                     ),
@@ -49142,6 +49143,296 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(70)
+/* template */
+var __vue_template__ = __webpack_require__(71)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\BandList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f0aa852c", Component.options)
+  } else {
+    hotAPI.reload("data-v-f0aa852c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'bandList',
+    props: ['lang', 'title', 'bands', 'images'],
+    computed: {
+        fullBands: function fullBands() {
+            var _this = this;
+
+            return this.bands.map(function (band, i) {
+                return {
+                    band: band,
+                    image: _this.images[i]
+                };
+            });
+        }
+    },
+    created: function created() {
+        console.log('Component BandList created');
+    }
+});
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "band-list" }, [
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _c("h3", [_vm._v(_vm._s(_vm.title))])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        _vm._l(_vm.fullBands, function(band) {
+          return _c("div", { staticClass: "preview margin-sm-bottom" }, [
+            _c("div", { staticClass: "data col-xs-12 col-md-9 float-left" }, [
+              _c("div", { staticClass: "name" }, [
+                _c("h4", [_vm._v(_vm._s(band.band.name))])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info margin-sm-top" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "form-group no-margin no-padding col-xs-12 col-md-6 float-left"
+                  },
+                  [
+                    _vm._v(
+                      "\n\t\t\t\t\t\t\t" +
+                        _vm._s(_vm.lang.place) +
+                        ": " +
+                        _vm._s(band.band.location) +
+                        "\n\t\t\t\t\t\t"
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "form-group no-margin no-padding col-xs-12 col-md-6 float-left"
+                  },
+                  [
+                    _vm._v(
+                      "\n\t\t\t\t\t\t\t" +
+                        _vm._s(_vm.lang.date) +
+                        ": " +
+                        _vm._s(band.date) +
+                        "\n\t\t\t\t\t\t"
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                band.band.open_doors
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "form-group no-margin no-padding col-xs-12 col-md-6 float-left"
+                      },
+                      [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t" +
+                            _vm._s(_vm.lang.openDoors) +
+                            ": " +
+                            _vm._s(band.band.open_doors) +
+                            " \n\t\t\t\t\t\t"
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                band.band.price
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "form-group no-margin no-padding col-xs-12 col-md-6 float-left"
+                      },
+                      [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t" +
+                            _vm._s(_vm.lang.price) +
+                            ": " +
+                            _vm._s(band.band.price) +
+                            " \n\t\t\t\t\t\t"
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                band.band.description
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "form-group no-margin no-padding col-xs-12 col-md-12"
+                      },
+                      [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t" +
+                            _vm._s(_vm.lang.desc) +
+                            ": " +
+                            _vm._s(band.band.description) +
+                            " \n\t\t\t\t\t\t"
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "form-group no-margin no-padding margin-sm-right col-xs-12"
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-primary margin-sm-right",
+                        attrs: { href: "/bands/" + band.band.id }
+                      },
+                      [_vm._v(_vm._s(_vm.lang.read_more))]
+                    ),
+                    _vm._v(" "),
+                    band.band.link
+                      ? _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { href: band.band.link }
+                          },
+                          [_vm._v(_vm._s(_vm.lang.link))]
+                        )
+                      : _vm._e()
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "image col-xs-12 col-md-3 float-right" }, [
+              _c("img", { attrs: { src: "/" + band.image.path } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "float-none" })
+          ])
+        })
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f0aa852c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

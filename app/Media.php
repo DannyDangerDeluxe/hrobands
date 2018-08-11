@@ -39,11 +39,6 @@ class Media extends Model
         return $this->hasOne('App\User', 'image_id', 'id');
     }
 
-    public function bandImages()
-    {
-        return $this->belongsToMany('App\Band', 'bands_media');
-    }
-
     public function userImages()
     {
         return $this->belongsToMany('App\User', 'users_media');
@@ -52,6 +47,16 @@ class Media extends Model
     public function gigImage()
     {
         return $this->belongsTo('App\Gig', 'id', 'image_id');
+    }
+
+    public function bandImage()
+    {
+        return $this->belongsTo('App\Band', 'id', 'image_media_id');
+    }
+
+    public function bandImages()
+    {
+        return $this->belongsToMany('App\Band', 'bands_media');
     }
     
     public static function getMediaById($id)

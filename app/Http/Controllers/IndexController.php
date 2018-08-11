@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Band;
 use App\Gig;
 use Prismic\Api;
 use Prismic\LinkResolver;
@@ -29,7 +30,6 @@ class IndexController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
     }
 
 
@@ -103,6 +103,40 @@ class IndexController extends Controller
         return view('content.gigs')->with([
             'gigs' => $gigs,
             'images' => $images
+        ]);
+    }
+
+    public function showBands()
+    {
+        $images = [];
+        $images = [];
+        $bands = Band::all();
+        foreach($bands as $band){
+            array_push($images, $band->bandImage);
+        }
+
+        // dd($bands, $images);
+
+        return view('content.bands')->with([
+            'bands' => $bands,
+            'images' => $images
+        ]);
+    }
+
+    public function showBandDetailPage(int $id)
+    {
+        $band = Band::find($id);
+        $image = array_first($band->bandImage()->get());
+        $images = $band->bandImages()->get();
+        $genre = array_first($band->genre()->get());
+
+        // dd($band, $image, $images, $genre);
+
+        return view('content.band_detail')->with([
+            'band' => $band,
+            '$image' => $image,
+            '$images' => $images,
+            '$genre' => $genre,
         ]);
     }
 }

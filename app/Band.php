@@ -36,6 +36,16 @@ class Band extends Model
         return $this->hasMany('App\User', 'band_id', 'id');
     }
 
+    public function genre()
+    {
+        return $this->hasOne('App\Genre', 'id', 'genre_id');
+    }
+
+    public function bandImage()
+    {
+        return $this->hasOne('App\Media', 'id', 'image_media_id');
+    }
+
     public function bandImages()
     {
         return $this->belongsToMany('App\Media', 'bands_media');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Band;
 use App\Gig;
 use App\Media;
 use Illuminate\Http\Request;
@@ -78,5 +79,20 @@ class GigController extends Controller{
             return redirect(url()->previous())
                 ->with('success',$success);
         }
+    }
+
+    public function showGigDetailPage(int $id)
+    {
+        $gig = Gig::find($id);
+        $band1 = Band::find($gig->band_one_id);
+        $band2 = Band::find($gig->band_two_id);
+        $band3 = Band::find($gig->band_three_id);
+
+        return view('content.gig_detail')->with([
+            'gig' => $gig,
+            'band1' => $band1 ? $band1 : null,
+            'band2' => $band2 ? $band2 : null,
+            'band3' => $band3 ? $band3 : null,
+        ]);
     }
 }

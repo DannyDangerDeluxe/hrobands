@@ -29,6 +29,11 @@ class Genre extends Model
         'name', 'parent'
     ];
 
+    public function bandImage()
+    {
+        return $this->belongsTo('App\Band', 'id', 'genre_id');
+    }
+
     public function __construct(){
     	
     }
