@@ -5,7 +5,7 @@
 				<h3>{{title}}</h3>
 			</div>
 			<div class="card-body">
-				<div v-for="gig in fullGigs" class="preview margin-sm-bottom">
+				<div v-for="gig in computedGigs" class="preview margin-sm-bottom">
 					<div class="data col-xs-12 col-md-9 float-left">
 						<div class="name">
 							<h4>{{ gig.gig.name }}</h4>
@@ -46,8 +46,22 @@
 <script>
     export default {
         name: 'gigList',
-        props: ['lang', 'title', 'gigs', 'images'],
+        props: ['lang', 'title', 'gigs', 'images', 'show'],
         computed: {
+        	computedGigs () {
+        		switch(this.show){
+        			case 'upcomming':
+        				return this.futureGigs;
+        				break;
+        			case 'outdated':
+        				return this.pastGigs;
+        				break;
+        			case 'all':
+        			default:
+        				return this.fullGigs;
+        				break;
+        		}
+        	},
         	fullGigs () {
         		return this.gigs.map((gig, i) => {
 					let tmpDate = gig.date.split('-');
@@ -58,23 +72,73 @@
 					}
 				})
         	},
-        	fullFutureGigs () {
-        		// buggy
-        		return this.gigs.filter((gig, i) => {
-					let nowDate = new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate();
-					console.log(nowDate);
-					if(gig.date <= nowDate){
+        	futureGigs () {
+				let nowDate = new Date();
+				nowDate.setMinutes(0);
+				nowDate.setSeconds(0);
+				nowDate.setMilliseconds(0);
+
+        		let result = this.gigs.filter((gig, i) => {
+        			let tmpDate = gig.date.split('-');	
+					let gigDate = new Date();
+					gigDate.setFullYear(tmpDate[0]);
+					// month array starts at 0
+					gigDate.setMonth(tmpDate[1]-1); 
+					gigDate.setDate(tmpDate[2]);
+					gigDate.setMinutes(0);
+					gigDate.setSeconds(0);
+					gigDate.setMilliseconds(0);
+					
+					if(gigDate >= nowDate){
 						return true;
+					}
+				});
+
+				return result.map((gig, i) => {
+					let tmpDate = gig.date.split('-');
+					return {
+						gig: gig,
+						image: this.images[i],
+						date: tmpDate[2] + ". " + tmpDate[1] + ". " + tmpDate[0]
+					}
+				});
+        	},
+        	pastGigs () {
+				let nowDate = new Date();
+				nowDate.setMinutes(0);
+				nowDate.setSeconds(0);
+				nowDate.setMilliseconds(0);
+
+        		let result = this.gigs.filter((gig, i) => {
+        			let tmpDate = gig.date.split('-');	
+					let gigDate = new Date();
+					gigDate.setFullYear(tmpDate[0]);
+					// month array starts at 0
+					gigDate.setMonth(tmpDate[1]-1); 
+					gigDate.setDate(tmpDate[2]);
+					gigDate.setMinutes(0);
+					gigDate.setSeconds(0);
+					gigDate.setMilliseconds(0);
+					
+					if(gigDate < nowDate){
+						return true;
+					}else{
+						return false;
+					}
+				});
+
+				return result.map((gig, i) => {
+					let tmpDate = gig.date.split('-');
+					return {
+						gig: gig,
+						image: this.images[i],
+						date: tmpDate[2] + ". " + tmpDate[1] + ". " + tmpDate[0]
 					}
 				});
         	},
         },
         created: function() {
         	console.log('Component GigList created');
-        	console.log(this.gigs);
-        	console.log(this.images);
-        	console.log(new Date());
-        	console.log(this.fullFutureGigs);
         }
     }
 </script>

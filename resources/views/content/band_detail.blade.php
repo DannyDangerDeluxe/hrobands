@@ -35,7 +35,7 @@
 
 						@if($image)
 							<div class="info col-xs-12 col-sm-6 ">
-								<p class="no-padding no-margin">{{ $image->path }} €</p>
+								<p class="no-padding no-margin">{{ $image->path }}</p>
 							</div>
 						@endif
 					</div>
