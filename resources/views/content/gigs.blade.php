@@ -4,9 +4,10 @@
 	<div id="app" class="content">
 	    <gig-list
             :lang="{{ json_encode( __('lang') ) }}"
-            title="Gig Liste"
+            title="Kommende Gigs"
             :gigs="{{ json_encode($gigs) }}"
             :images="{{ json_encode($images) }}"
+            show="upcomming"
         ></gig-list>
 	</div>
 @endsection

@@ -13992,7 +13992,7 @@ __WEBPACK_IMPORTED_MODULE_0__Coverflow_vue___default.a.install = (Vue) => {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(65);
+module.exports = __webpack_require__(68);
 
 
 /***/ }),
@@ -14025,7 +14025,7 @@ Vue.component('latest-bands', __webpack_require__(48));
 Vue.component('image-upload', __webpack_require__(51));
 Vue.component('image-view', __webpack_require__(54));
 Vue.component('gig-list', __webpack_require__(62));
-Vue.component('band-list', __webpack_require__(69));
+Vue.component('band-list', __webpack_require__(65));
 Vue.component(__WEBPACK_IMPORTED_MODULE_0_vue_coverflow__["a" /* default */].name, __WEBPACK_IMPORTED_MODULE_0_vue_coverflow__["a" /* default */]);
 
 var app = new Vue({
@@ -48935,39 +48935,107 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'gigList',
-  props: ['lang', 'title', 'gigs', 'images'],
-  computed: {
-    fullGigs: function fullGigs() {
-      var _this = this;
+	name: 'gigList',
+	props: ['lang', 'title', 'gigs', 'images', 'show'],
+	computed: {
+		computedGigs: function computedGigs() {
+			switch (this.show) {
+				case 'upcomming':
+					return this.futureGigs;
+					break;
+				case 'outdated':
+					return this.pastGigs;
+					break;
+				case 'all':
+				default:
+					return this.fullGigs;
+					break;
+			}
+		},
+		fullGigs: function fullGigs() {
+			var _this = this;
 
-      return this.gigs.map(function (gig, i) {
-        var tmpDate = gig.date.split('-');
-        return {
-          gig: gig,
-          image: _this.images[i],
-          date: tmpDate[2] + ". " + tmpDate[1] + ". " + tmpDate[0]
-        };
-      });
-    },
-    fullFutureGigs: function fullFutureGigs() {
-      // buggy
-      return this.gigs.filter(function (gig, i) {
-        var nowDate = new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate();
-        console.log(nowDate);
-        if (gig.date <= nowDate) {
-          return true;
-        }
-      });
-    }
-  },
-  created: function created() {
-    console.log('Component GigList created');
-    console.log(this.gigs);
-    console.log(this.images);
-    console.log(new Date());
-    console.log(this.fullFutureGigs);
-  }
+			return this.gigs.map(function (gig, i) {
+				var tmpDate = gig.date.split('-');
+				return {
+					gig: gig,
+					image: _this.images[i],
+					date: tmpDate[2] + ". " + tmpDate[1] + ". " + tmpDate[0]
+				};
+			});
+		},
+		futureGigs: function futureGigs() {
+			var _this2 = this;
+
+			var nowDate = new Date();
+			nowDate.setMinutes(0);
+			nowDate.setSeconds(0);
+			nowDate.setMilliseconds(0);
+
+			var result = this.gigs.filter(function (gig, i) {
+				var tmpDate = gig.date.split('-');
+				var gigDate = new Date();
+				gigDate.setFullYear(tmpDate[0]);
+				// month array starts at 0
+				gigDate.setMonth(tmpDate[1] - 1);
+				gigDate.setDate(tmpDate[2]);
+				gigDate.setMinutes(0);
+				gigDate.setSeconds(0);
+				gigDate.setMilliseconds(0);
+
+				if (gigDate >= nowDate) {
+					return true;
+				}
+			});
+
+			return result.map(function (gig, i) {
+				var tmpDate = gig.date.split('-');
+				return {
+					gig: gig,
+					image: _this2.images[i],
+					date: tmpDate[2] + ". " + tmpDate[1] + ". " + tmpDate[0]
+				};
+			});
+		},
+		pastGigs: function pastGigs() {
+			var _this3 = this;
+
+			var nowDate = new Date();
+			nowDate.setMinutes(0);
+			nowDate.setSeconds(0);
+			nowDate.setMilliseconds(0);
+
+			var result = this.gigs.filter(function (gig, i) {
+				var tmpDate = gig.date.split('-');
+				var gigDate = new Date();
+				gigDate.setFullYear(tmpDate[0]);
+				// month array starts at 0
+				gigDate.setMonth(tmpDate[1] - 1);
+				gigDate.setDate(tmpDate[2]);
+				gigDate.setMinutes(0);
+				gigDate.setSeconds(0);
+				gigDate.setMilliseconds(0);
+
+				if (gigDate < nowDate) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+
+			return result.map(function (gig, i) {
+				var tmpDate = gig.date.split('-');
+				return {
+					gig: gig,
+					image: _this3.images[i],
+					date: tmpDate[2] + ". " + tmpDate[1] + ". " + tmpDate[0]
+				};
+			});
+		}
+	},
+	created: function created() {
+		console.log('Component GigList created');
+	}
 });
 
 /***/ }),
@@ -48987,7 +49055,7 @@ var render = function() {
       _c(
         "div",
         { staticClass: "card-body" },
-        _vm._l(_vm.fullGigs, function(gig) {
+        _vm._l(_vm.computedGigs, function(gig) {
           return _c("div", { staticClass: "preview margin-sm-bottom" }, [
             _c("div", { staticClass: "data col-xs-12 col-md-9 float-left" }, [
               _c("div", { staticClass: "name" }, [
@@ -49140,23 +49208,14 @@ if (false) {
 
 /***/ }),
 /* 65 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(70)
+var __vue_script__ = __webpack_require__(66)
 /* template */
-var __vue_template__ = __webpack_require__(71)
+var __vue_template__ = __webpack_require__(67)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49195,7 +49254,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 70 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49267,7 +49326,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 71 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49433,6 +49492,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-f0aa852c", module.exports)
   }
 }
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
